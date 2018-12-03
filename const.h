@@ -1,7 +1,7 @@
 #define FLOAT_OUT_FILE_LOCAT "rand_floatArr.txt"
 #define UNSIGNED_OUT_FILE_LOCAT "rand_unsignedArr.txt"
 #define array_size 10000
-#define float_mode 2
+#define float_mode 1
 
 
 enum Error {

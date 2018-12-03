@@ -18,7 +18,7 @@ To generate different mode (e.g. normalize...) of randomized float array,
 
 
 /* generate two array, one is for float, the other is for fixed-point (implemented by unsigned int) */
-int gen_rand_Array(size_t size, enum Mode mode, float *float_output, unsigned *unsigned_output) {
+int gen_rand_Array(size_t size, enum Mode mode, unsigned *float_output, unsigned *unsigned_output) {
     /* set output memory space */
     enum Error err = EXEC_SUCCESS;
 
@@ -26,13 +26,15 @@ int gen_rand_Array(size_t size, enum Mode mode, float *float_output, unsigned *u
     for (int i = 0; i < size; i++) {
         /* get a random number to generate corresponding normalized/ denormalize float */
         unsigned int seed = RAND_RANGE_MIN + rand() % RAND_RANGE_MAX;
+        float result;
         switch (mode) {
             case NORMALIZE:
-                float_output[i] = seed * NORMAL_LOWER_BIT;
+                result = seed * NORMAL_LOWER_BIT;
+                float_output[i] = *(unsigned *)&result;
                 unsigned_output[i] = seed;
                 break;
             case DENORMALIZE:
-                float_output[i] = *(float *)&seed;
+                float_output[i] = seed;
                 unsigned_output[i] = seed;
                 break;
             case SPECIAL:
@@ -74,8 +76,12 @@ int main() {
     }
     */
 
-    float *float_output;
-    float_output = (float *)malloc(arrSize * sizeof(float));
+    /* although this is a float array, in denormalize float there is no way to 
+       and no need to translate it into decimal form and print it all out 
+       Instead, using unsigned to transfer will reduce the time to decompose. */
+
+    unsigned *float_output;
+    float_output = (unsigned *)malloc(arrSize * sizeof(unsigned int));
     if (float_output == NULL) {
         err = MEM_NOT_ALLOC;
         fprintf(stderr, "Failed to malloc test case.\n");
@@ -95,7 +101,7 @@ int main() {
     }
 
     for (int i = 0; i < arrSize; i ++){
-        fprintf(fp_float_out, "%f\n", float_output[i]);
+        fprintf(fp_float_out, "%u\n", float_output[i]);
     }
 
     fclose(fp_float_out);
