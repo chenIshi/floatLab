@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
 #include "const.h"
 
 int main() {
@@ -22,24 +24,15 @@ int main() {
 
     fclose(fpin);
 
+    struct timespec start, end, elipse;
     for (int i = 0; i < array_size; i ++) {
-        input[i] *= 2;
-    }
-    /* chech for accuracy */
-    /*
-    FILE *fpout = fopen(FLOAT_CHECK_FILE_LOCAT, "w");
-    if (!fpout) {
-        fprintf(stderr, "Failed to check unsigned result.\n");
-        err = FILE_CANT_OPEN;
-        return err;
+        clock_gettime(CLOCK_MONOTONIC, &start);
+        input[i] *= MULTIPLIER;
+        clock_gettime(CLOCK_MONOTONIC, &end);
+        elipse.tv_nsec += end.tv_nsec - start.tv_nsec;
     }
 
-    for (int i = 0; i < array_size; i++) {
-        fprintf(fpout, "%a\n", input[i]);
-    }
-
-    fclose(fpout);
-    */
-    return 0;
-    
+    printf("%f\n", (float)(elipse.tv_nsec / array_size));
+   
+    return 0; 
 }

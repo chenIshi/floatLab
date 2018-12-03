@@ -6,6 +6,8 @@
 #define array_size 10000
 #define float_mode 1
 
+#define MULTIPLIER 2
+
 
 enum Error {
     EXEC_SUCCESS = 0,
