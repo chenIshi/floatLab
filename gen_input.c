@@ -29,7 +29,7 @@ int gen_rand_Array(size_t size, enum Mode mode, float *float_output, unsigned *u
         switch (mode) {
             case NORMALIZE:
                 float_output[i] = seed * NORMAL_LOWER_BIT;
-                unsigned_output[i] = seed * NORMAL_LOWER_BIT;
+                unsigned_output[i] = seed;
                 break;
             case DENORMALIZE:
                 float_output[i] = *(float *)&seed;
