@@ -1,5 +1,8 @@
 #define FLOAT_OUT_FILE_LOCAT "rand_floatArr.txt"
+#define FLOAT_CHECK_FILE_LOCAT "float_check.txt"
 #define UNSIGNED_OUT_FILE_LOCAT "rand_unsignedArr.txt"
+#define UNSIGNED_CHECK_FILE_LOCAT "unsigned_check.txt"
+
 #define array_size 10000
 #define float_mode 1
 

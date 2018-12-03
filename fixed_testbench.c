@@ -12,18 +12,35 @@ int main() {
         return err;
     }
 
-    float input [array_size];
-    /*to do : eliminate transform cost */
-    unsigned float2unsigned [array_size];    
+    unsigned int input [array_size];   
 
     for (int i = 0; i < array_size; i ++) {
-        fscanf(fpin, "%f\n", input[i]);
-        float2unsigned[i] = *(unsigned *)&(input[i]);
+        unsigned int result;
+        fscanf(fpin, "%u\n", &result);
+        input [i] = result;
     }
 
     fclose(fpin);
 
+    for (int i = 0; i < array_size; i ++) {
+        input[i] *= 2;
+    }
 
-    
+    /* chech for accuracy */
+    /*
+    FILE *fpout = fopen(UNSIGNED_CHECK_FILE_LOCAT, "w");
+    if (!fpout) {
+        fprintf(stderr, "Failed to check unsigned result.\n");
+        err = FILE_CANT_OPEN;
+        return err;
+    }
+
+    for (int i = 0; i < array_size; i++) {
+        fprintf(fpout, "%u\n", input[i]);
+    }
+
+    fclose(fpout);
+    */
+    return 0;    
     
 }
