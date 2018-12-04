@@ -32,7 +32,7 @@ int main() {
         elipse.tv_nsec += end.tv_nsec - start.tv_nsec;
     }
 
-    printf("%f\n", (float)(elipse.tv_nsec / array_size));
+    printf("%d\n", (unsigned int)(elipse.tv_nsec / array_size));
 
     return 0;    
 }
