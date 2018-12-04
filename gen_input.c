@@ -13,6 +13,8 @@ To generate different mode (e.g. normalize...) of randomized float array,
 
 #define RAND_RANGE_MAX 100000
 #define RAND_RANGE_MIN 1
+#define DE2NOR_RANGE_MAX 0x7FFFFF
+#define DE2NOR_RANGE_MIN 0x400000
 
 #define NORMAL_LOWER_BIT 0.01
 
@@ -26,8 +28,11 @@ int gen_rand_Array(size_t size, enum Mode mode, unsigned *float_output, unsigned
     for (int i = 0; i < size; i++) {
         /* get a random number to generate corresponding normalized/ denormalize float */
         unsigned int seed = RAND_RANGE_MIN + rand() % RAND_RANGE_MAX;
+        unsigned de2nor_seed = DE2NOR_RANGE_MIN + rand() % DE2NOR_RANGE_MAX;
         float result;
         switch (mode) {
+            case SPECIAL:
+                break;
             case NORMALIZE:
                 result = seed * NORMAL_LOWER_BIT;
                 float_output[i] = *(unsigned *)&result;
@@ -37,8 +42,9 @@ int gen_rand_Array(size_t size, enum Mode mode, unsigned *float_output, unsigned
                 float_output[i] = seed;
                 unsigned_output[i] = seed;
                 break;
-            case SPECIAL:
-                break;
+            case DE2NOR:
+                float_output[i] = seed;
+                unsigned_output[i] = seed;
             default:
                 break;
         }
@@ -81,7 +87,7 @@ int main() {
        Instead, using unsigned to transfer will reduce the time to decompose. */
 
     unsigned *float_output;
-    float_output = (unsigned *)malloc(arrSize * sizeof(unsigned int));
+    float_output = (unsigned *)malloc(array_size * sizeof(unsigned int));
     if (float_output == NULL) {
         err = MEM_NOT_ALLOC;
         fprintf(stderr, "Failed to malloc test case.\n");
