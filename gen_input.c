@@ -43,8 +43,8 @@ int gen_rand_Array(size_t size, enum Mode mode, unsigned *float_output, unsigned
                 unsigned_output[i] = seed;
                 break;
             case DE2NOR:
-                float_output[i] = seed;
-                unsigned_output[i] = seed;
+                float_output[i] = de2nor_seed;
+                unsigned_output[i] = de2nor_seed;
             default:
                 break;
         }
