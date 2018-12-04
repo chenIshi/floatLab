@@ -12,6 +12,7 @@ ALL: $(EXEC) $(TESTBENCH)
 	$(CC) $< -o $@
 
 plot : $(PLOT_SRC)
+	./$(EXEC)
 	$(TEST_SCRIPT)
 	$(PLOT_PROG) $<
 
