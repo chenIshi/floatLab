@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "const.h"
 
 #define FLOAT_IN "float_plot_data.txt"
 #define FIXED_IN "fixed_plot_data.txt"
-#define ARR_SIZE 100000
 
 int main() {
     FILE *fpfloat = fopen(FLOAT_IN, "r");
@@ -21,6 +21,7 @@ int main() {
 
     unsigned int float_percent = 0;
     unsigned int fixed_percent = 0;
+    unsigned int equal_percent = 0;
 
     double float_avg = 0;
     double fixed_avg = 0;
@@ -31,7 +32,7 @@ int main() {
     unsigned int float_err = 0;
     unsigned int fixed_err = 0;
 
-    for (unsigned long i = 0; i < ARR_SIZE; i++) {
+    for (unsigned long i = 0; i < array_size; i++) {
         long float_t, fixed_t;
         fscanf(fpfloat, "%ld\n", &float_t);
         fscanf(fpfixed, "%ld\n", &fixed_t);
@@ -60,6 +61,7 @@ printf("float_temp = %lu, fixed_temp = %lu\n", float_temp, fixed_temp);
         }
         float_percent += (float_t > fixed_t);
         fixed_percent += (fixed_t > float_t);
+        equal_percent += (float_t == fixed_t);
     }
 
     fclose(fpfloat);
@@ -67,7 +69,7 @@ printf("float_temp = %lu, fixed_temp = %lu\n", float_temp, fixed_temp);
   
     printf("float_avg = %lf, fixed_avg = %lf\n", float_avg, fixed_avg);
     printf("float_err = %d, fixed_err = %d\n", float_err, fixed_err);
-    printf("float_percent = %d, fixed_percent = %d\n", float_percent, fixed_percent);
+    printf("float_percent = %d, fixed_percent = %d, equal_percent = %d\n", float_percent, fixed_percent, equal_percent);
 
     return 0;
 }
