@@ -22,4 +22,4 @@ check : $(ANALYSIS)
 .PHONY : ALL plot clean check
 
 clean :
-	rm $(EXEC) $(TESTBENCH)
+	rm $(EXEC) $(TESTBENCH) $(ANALYSIS)

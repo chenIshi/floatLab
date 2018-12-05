@@ -19,21 +19,50 @@ int main() {
         exit(1);
     }
 
-    int float_percent = 0;
-    int fixed_percent = 0;
+    unsigned int float_percent = 0;
+    unsigned int fixed_percent = 0;
 
+    double float_avg = 0;
+    double fixed_avg = 0;
 
-    for (int i = 0; i < ARR_SIZE; i++) {
-        float float_t, fixed_t;
-        fscanf(fpfloat, "%f\n", &float_t);
-        fscanf(fpfixed, "%f\n", &fixed_t);
-        float_percent += (int)(float_t > fixed_t);
-        fixed_percent += (int)(fixed_t > float_t);
+    unsigned long float_temp = 0;
+    unsigned long fixed_temp = 0;
+
+    unsigned int float_err = 0;
+    unsigned int fixed_err = 0;
+
+    for (unsigned long i = 0; i < ARR_SIZE; i++) {
+        long float_t, fixed_t;
+        fscanf(fpfloat, "%ld\n", &float_t);
+        fscanf(fpfixed, "%ld\n", &fixed_t);
+
+        if (float_t < 0) {
+            float_t = 0;
+            float_err ++;
+        }
+
+        if (fixed_t < 0) {
+            fixed_t = 0;
+            fixed_err ++;
+        }
+
+        float_temp += float_t;
+        fixed_temp += fixed_t;
+        if (i % 1000 == 0) {
+            float_avg += (float_temp / 1000);
+            fixed_avg += (fixed_temp / 1000);
+            float_temp = 0;
+            fixed_temp = 0;
+        }
+        float_percent += (float_t > fixed_t);
+        fixed_percent += (fixed_t > float_t);
     }
 
     fclose(fpfloat);
     fclose(fpfixed);
-
+  
+    printf("float_avg = %lf, fixed_avg = %lf\n", float_avg, fixed_avg);
+    printf("float_err = %d, fixed_err = %d\n", float_err, fixed_err);
     printf("float_percent = %d, fixed_percent = %d\n", float_percent, fixed_percent);
 
     return 0;
