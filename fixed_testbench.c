@@ -30,7 +30,7 @@ int main() {
         clock_gettime(CLOCK_MONOTONIC, &start);
         input[i] *= MULTIPLIER;
         clock_gettime(CLOCK_MONOTONIC, &end);
-        elipse += (unsigned long)(end.tv_nsec - start.tv_nsec);
+        elipse = (unsigned long)(end.tv_nsec - start.tv_nsec);
         printf("%lu\n", elipse);
     }
 
