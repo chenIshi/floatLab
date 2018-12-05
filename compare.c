@@ -49,8 +49,12 @@ int main() {
         float_temp += float_t;
         fixed_temp += fixed_t;
         if (i % 1000 == 0) {
-            float_avg += (float_temp / 1000);
-            fixed_avg += (fixed_temp / 1000);
+/*
+printf("i = %lu, float_avg = %lf, fixed_avg = %lf\n", i, float_avg, fixed_avg);
+printf("float_temp = %lu, fixed_temp = %lu\n", float_temp, fixed_temp);
+*/
+            float_avg += (float_temp / 1000.0);
+            fixed_avg += (fixed_temp / 1000.0);
             float_temp = 0;
             fixed_temp = 0;
         }
