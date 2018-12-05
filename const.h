@@ -3,7 +3,7 @@
 #define UNSIGNED_OUT_FILE_LOCAT "rand_unsignedArr.txt"
 #define UNSIGNED_CHECK_FILE_LOCAT "unsigned_check.txt"
 
-#define array_size 10000
+#define array_size 100000
 #define float_mode 1
 
 #define MULTIPLIER 2

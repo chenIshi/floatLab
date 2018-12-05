@@ -16,7 +16,7 @@ int main() {
 
     unsigned int input [array_size];   
 
-    for (int i = 0; i < array_size; i ++) {
+    for (unsigned long i = 0; i < array_size; i ++) {
         unsigned int result;
         fscanf(fpin, "%u\n", &result);
         input [i] = result;
@@ -24,15 +24,15 @@ int main() {
 
     fclose(fpin);
 
-    struct timespec start, end, elipse;
-    for (int i = 0; i < array_size; i ++) {
+    struct timespec start, end;
+    unsigned long elipse = 0;
+    for (unsigned long i = 0; i < array_size; i ++) {
         clock_gettime(CLOCK_MONOTONIC, &start);
         input[i] *= MULTIPLIER;
         clock_gettime(CLOCK_MONOTONIC, &end);
-        elipse.tv_nsec += end.tv_nsec - start.tv_nsec;
+        elipse += (unsigned long)(end.tv_nsec - start.tv_nsec);
+        printf("%lu\n", elipse);
     }
-
-    printf("%d\n", (unsigned int)(elipse.tv_nsec / array_size));
 
     return 0;    
 }

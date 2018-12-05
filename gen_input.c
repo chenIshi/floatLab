@@ -25,7 +25,7 @@ int gen_rand_Array(size_t size, enum Mode mode, unsigned *float_output, unsigned
     enum Error err = EXEC_SUCCESS;
 
     srand(time(NULL));
-    for (int i = 0; i < size; i++) {
+    for (unsigned long i = 0; i < size; i++) {
         /* get a random number to generate corresponding normalized/ denormalize float */
         unsigned int seed = RAND_RANGE_MIN + rand() % RAND_RANGE_MAX;
         unsigned de2nor_seed = DE2NOR_RANGE_MIN + rand() % DE2NOR_RANGE_MAX;
@@ -106,7 +106,7 @@ int main() {
         return err;
     }
 
-    for (int i = 0; i < arrSize; i ++){
+    for (unsigned long i = 0; i < arrSize; i ++){
         fprintf(fp_float_out, "%u\n", float_output[i]);
     }
 
@@ -121,7 +121,7 @@ int main() {
         return err;
     }
 
-    for (int i = 0; i < arrSize; i ++){
+    for (unsigned long i = 0; i < arrSize; i ++){
         fprintf(fp_unsigned_out, "%u\n", unsigned_output[i]);
     }
 
