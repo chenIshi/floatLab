@@ -43,17 +43,17 @@ int trigger = 0;
         clock_gettime(CLOCK_MONOTONIC, &nan_dstart);
         float nan_dresult = rand_denormal_float * rand_nan_float;
         clock_gettime(CLOCK_MONOTONIC, &nan_dstop);
-        nan_dtime += (unsigned long)(nan_dstop.tv_nsec - nan_dstart.tv_nsec);
+        nan_dtime = (unsigned long)(nan_dstop.tv_nsec - nan_dstart.tv_nsec);
 
         clock_gettime(CLOCK_MONOTONIC, &inf_nstart);
         float inf_nresult = rand_normal_float * POS_INF;
         clock_gettime(CLOCK_MONOTONIC, &inf_nstop);
-        inf_ntime += (unsigned long)(inf_nstop.tv_nsec - inf_nstart.tv_nsec);
+        inf_ntime = (unsigned long)(inf_nstop.tv_nsec - inf_nstart.tv_nsec);
 
         clock_gettime(CLOCK_MONOTONIC, &inf_dstart);
         float inf_dresult = rand_denormal_float * POS_INF;
         clock_gettime(CLOCK_MONOTONIC, &inf_dstop);
-        inf_dtime += (unsigned long)(inf_dstop.tv_nsec - inf_dstart.tv_nsec);
+        inf_dtime = (unsigned long)(inf_dstop.tv_nsec - inf_dstart.tv_nsec);
 
         printf("%lu, %lu, %lu, %lu\n", nan_ntime, nan_dtime ,inf_ntime , inf_dtime );
     }
