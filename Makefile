@@ -1,4 +1,4 @@
-
+ANALYSIS=compare
 EXEC:=gen_input
 TESTBENCH:=fixed_testbench float_testbench
 TEST_SCRIPT:=./testbench.sh
@@ -16,7 +16,10 @@ plot : $(PLOT_SRC)
 	$(TEST_SCRIPT)
 	$(PLOT_PROG) $<
 
-.PHONY : ALL plot clean
+check : $(ANALYSIS)
+        ./$<
+
+.PHONY : ALL plot clean check
 
 clean :
 	rm $(EXEC) $(TESTBENCH)
