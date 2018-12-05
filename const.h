@@ -21,5 +21,6 @@ enum Error {
 enum Mode {
     SPECIAL = 0,
     NORMALIZE,
-    DENORMALIZE
+    DENORMALIZE,
+    DE2NOR
 };
