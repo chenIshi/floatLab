@@ -17,7 +17,7 @@ plot : $(PLOT_SRC)
 	$(PLOT_PROG) $<
 
 check : $(ANALYSIS)
-        ./$<
+	./$<
 
 .PHONY : ALL plot clean check
 
