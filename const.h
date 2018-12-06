@@ -4,9 +4,9 @@
 #define UNSIGNED_CHECK_FILE_LOCAT "unsigned_check.txt"
 
 #define array_size 100000
-#define float_mode 1
+#define float_mode 3
 
-#define MULTIPLIER 2
+#define MULTIPLIER 5
 
 
 enum Error {
