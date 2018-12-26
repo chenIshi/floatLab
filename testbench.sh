@@ -5,10 +5,10 @@ FLOAT_PLOT_DATA="./float_plot_data.txt"
 FIXED_TESTBENCH="./fixed_testbench"
 FIXED_PLOT_DATA="./fixed_plot_data.txt"
 
-FIXED_TESTBENCH_SSE="./fixed_testbench_SSE"
+FIXED_TESTBENCH_SSE="./fixed_testbench_sse"
 FIXED_PLOT_DATA_SSE="./fixed_plot_data_sse.txt"
 
-FIXED_TESTBENCH_WITHOUT_SSE="./fixed_testbench_without_SSE"
+FIXED_TESTBENCH_WITHOUT_SSE="./fixed_testbench_without_sse"
 FIXED_PLOT_DATA_WITHOUT_SSE="./fixed_plot_data_without_sse.txt"
 
 SP_TESTBENCH="./special_testbench"

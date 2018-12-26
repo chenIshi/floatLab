@@ -2,6 +2,7 @@
 #define FLOAT_CHECK_FILE_LOCAT "float_check.txt"
 #define UNSIGNED_OUT_FILE_LOCAT "rand_unsignedArr.txt"
 #define UNSIGNED_CHECK_FILE_LOCAT "unsigned_check.txt"
+#define FIXED_PLOT_FILE "fixed_plot_data.txt"
 
 #define array_size 100000
 #define float_mode 3
