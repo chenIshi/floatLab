@@ -5,6 +5,12 @@ FLOAT_PLOT_DATA="./float_plot_data.txt"
 FIXED_TESTBENCH="./fixed_testbench"
 FIXED_PLOT_DATA="./fixed_plot_data.txt"
 
+FIXED_TESTBENCH_SSE="./fixed_testbench_SSE"
+FIXED_PLOT_DATA_SSE="./fixed_plot_data_sse.txt"
+
+FIXED_TESTBENCH_WITHOUT_SSE="./fixed_testbench_without_SSE"
+FIXED_PLOT_DATA_WITHOUT_SSE="./fixed_plot_data_without_sse.txt"
+
 SP_TESTBENCH="./special_testbench"
 SP_PLOT_DATA="./special_plot_data.txt"
 
@@ -24,7 +30,19 @@ then
     rm $SP_PLOT_DATA
 fi
 
+if [ -a $FIXED_PLOT_DATA_SSE ]
+then
+    rm $FIXED_PLOT_DATA_SSE
+fi
+
+if [ -a $FIXED_PLOT_DATA_WITHOUT_SSE ]
+then
+    rm $FIXED_PLOT_DATA_WITHOUT_SSE
+fi
+
 # testbench
 $FLOAT_TESTBENCH >> $FLOAT_PLOT_DATA
 $FIXED_TESTBENCH >> $FIXED_PLOT_DATA 
 $SP_TESTBENCH >> $SP_PLOT_DATA
+$FIXED_TESTBENCH_SSE >> $FIXED_PLOT_DATA_SSE
+$FIXED_TESTBENCH_WITHOUT_SSE >> $FIXED_PLOT_DATA_WITHOUT_SSE

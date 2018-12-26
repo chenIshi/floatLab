@@ -32,11 +32,11 @@ int trigger = 0;
         // if (nan_nstop.tv_nsec < nan_dstart.tv_nsec) printf("i = %d, start - stop = %d", i, (int)(nan_nstart.tv_nsec - nan_nstop.tv_nsec)); 
         nan_ntime += (unsigned long)(nan_nstop.tv_nsec - nan_nstart.tv_nsec);
         if(nan_nstop.tv_nsec - nan_nstart.tv_nsec > 100) {
-            printf("i = %d, stop - start = %d\n", i, (int)(nan_nstop.tv_nsec - nan_nstart.tv_nsec)); 
+            printf("i = %ld, stop - start = %d\n", i, (int)(nan_nstop.tv_nsec - nan_nstart.tv_nsec)); 
         }
 
         if (!trigger && nan_ntime > 10000000) {
-            printf("i = %d, nan_ntime = %lu\n", i, nan_ntime);
+            printf("i = %ld, nan_ntime = %lu\n", i, nan_ntime);
             trigger = 1;
         }
 
