@@ -2,6 +2,12 @@
 FLOAT_TESTBENCH="./float_testbench"
 FLOAT_PLOT_DATA="./float_plot_data.txt"
 
+FLOAT_TESTBENCH_SSE="./float_testbench_sse"
+FLOAT_PLOT_DATA_SSE="./float_plot_data_sse.txt"
+
+FLOAT_TESTBENCH_WITHOUT_SSE="./float_testbench_without_sse"
+FLOAT_PLOT_DATA_WITHOUT_SSE="./float_plot_data_without_sse.txt"
+
 FIXED_TESTBENCH="./fixed_testbench"
 FIXED_PLOT_DATA="./fixed_plot_data.txt"
 
@@ -40,9 +46,21 @@ then
     rm $FIXED_PLOT_DATA_WITHOUT_SSE
 fi
 
+if [ -a $FLOAT_PLOT_DATA_SSE ]
+then
+    rm $FLOAT_PLOT_DATA_SSE
+fi
+
+if [ -a $FLOAT_PLOT_DATA_WITHOUT_SSE ]
+then
+    rm $FLOAT_PLOT_DATA_WITHOUT_SSE
+fi
+
 # testbench
 $FLOAT_TESTBENCH >> $FLOAT_PLOT_DATA
 $FIXED_TESTBENCH >> $FIXED_PLOT_DATA 
 $SP_TESTBENCH >> $SP_PLOT_DATA
 $FIXED_TESTBENCH_SSE >> $FIXED_PLOT_DATA_SSE
 $FIXED_TESTBENCH_WITHOUT_SSE >> $FIXED_PLOT_DATA_WITHOUT_SSE
+$FLOAT_TESTBENCH_SSE >> $FLOAT_PLOT_DATA_SSE
+$FLOAT_TESTBENCH_WITHOUT_SSE >> $FLOAT_PLOT_DATA_WITHOUT_SSE

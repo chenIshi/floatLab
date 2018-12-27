@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <xmmintrin.h>
 
 #include "const.h"
 
@@ -29,10 +30,16 @@ int main()
 
     struct timespec start, end;
     unsigned long elipse = 0;
-    for (unsigned long i = 0; i < array_size; i++)
+
+    float m[4] = {MULTIPLIER};
+
+    __m128 x, y = _mm_load_ps(m);
+
+    for (unsigned long i = 0; i < array_size; i += 4)
     {
         clock_gettime(CLOCK_MONOTONIC, &start);
-        input[i] *= MULTIPLIER;
+        x = _mm_load_ps(input[i]);
+        x = _mm_mul_ps(x, y);
         clock_gettime(CLOCK_MONOTONIC, &end);
         elipse = (unsigned long)(end.tv_nsec - start.tv_nsec);
         printf("%lu\n", elipse);

@@ -11,8 +11,9 @@ PLOT_NAN:=nan.gp
 PLOT_FIX_SSE:=fixed_vs_fixed_sse.gp
 PLOT_PROG:=gnuplot
 
-PLOT_PIC:= normalized.png denormalized.png D2N.png NAN.png INF.png fixed_vs_fixed_sse.png
-PLOT_DATA:= fixed_plot_data.txt float_plot_data.txt special_plot_data.txt fixed_plot_data_sse.txt fixed_plot_data_without_sse.txt
+PLOT_PIC:= normalized.png denormalized.png D2N.png NAN.png INF.png fixed_vs_fixed_sse.png float_vs_float_sse.png
+PLOT_DATA:= fixed_plot_data.txt float_plot_data.txt special_plot_data.txt fixed_plot_data_sse.txt fixed_plot_data_without_sse.txt \
+float_plot_data_sse.txt float_plot_data_without_sse.txt
 
 ALL: $(EXEC) $(TESTBENCH)
 	./$(EXEC)
